@@ -133,9 +133,9 @@ module Skylight::Core
         error = nil
         begin
           attrs = YAML.safe_load(ERB.new(File.read(path)).result,
-                                 [], # permitted_classes
-                                 [], # permitted_symbols
-                                 true # aliases enabled
+                                 permitted_classes: [], # permitted_classes
+                                 permitted_symbols: [], # permitted_symbols
+                                 aliases: true # aliases enabled
                                 )
           error = "empty file" unless attrs
           error = "invalid format" if attrs && !attrs.is_a?(Hash)
